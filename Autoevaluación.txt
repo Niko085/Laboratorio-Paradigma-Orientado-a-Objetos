@@ -1,0 +1,27 @@
+Requerimientos Funcionales	Evaluación
+Clases y estructuras                0
+Menú                                0
+image	                            0
+isBitmap                            0
+isPixmap	                    0
+isHexmap	                    0
+isCompressed	                    0
+flipH	                            0
+flipV	                            0
+crop                                0
+imgRGBToHex                         0
+histogram                           0
+rotate90                            0
+compress                            0
+changePixel                         0
+invertColorBit                      0
+invertColorRGB                      0
+image->string                       0
+depthLayers                         0
+decompress                          0
+
+
+
+
+
+
