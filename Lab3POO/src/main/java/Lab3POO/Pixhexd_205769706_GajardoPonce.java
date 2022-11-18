@@ -12,7 +12,7 @@ package Lab3POO;
 public class Pixhexd_205769706_GajardoPonce {
     private int x;
     private int y;
-    private String color;
+    private String color;//Color en Hexadecimal
     private int depth;
     
     //Constructor
@@ -20,7 +20,7 @@ public class Pixhexd_205769706_GajardoPonce {
     public Pixhexd_205769706_GajardoPonce(int x, int y, String color, int depth) {
         this.x = x;
         this.y = y;
-        this.color = color;
+        this.color = color;//Color en Hexadecimal
         this.depth = depth;
     }
     

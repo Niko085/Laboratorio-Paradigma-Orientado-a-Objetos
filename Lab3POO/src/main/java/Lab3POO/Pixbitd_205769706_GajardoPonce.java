@@ -34,7 +34,9 @@ public class Pixbitd_205769706_GajardoPonce {
         return depth;
     }
 
-    
+    public String mostrarDatos(){
+        return "x: "+x+"\ny: "+y+"\nbit: "+bit+"\nprofundidad: "+depth+"\n";
+    }
     
     
 }
