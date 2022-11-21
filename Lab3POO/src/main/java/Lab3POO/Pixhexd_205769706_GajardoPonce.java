@@ -16,7 +16,6 @@ public class Pixhexd_205769706_GajardoPonce {
     private int depth;
     
     //Constructor
-
     public Pixhexd_205769706_GajardoPonce(int x, int y, String color, int depth) {
         this.x = x;
         this.y = y;
@@ -25,7 +24,6 @@ public class Pixhexd_205769706_GajardoPonce {
     }
     
     //Getters
-
     public int getX() {
         return x;
     }
