@@ -9,7 +9,7 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixhexd_205769706_GajardoPonce {
+public class Pixhexd_205769706_GajardoPonce{
     private int x;
     private int y;
     private String color;//Color en Hexadecimal
