@@ -2,15 +2,15 @@
 package Lab3POO;
 
 
-public class Pixbitd_205769706_GajardoPonce extends imagen_205769706_GajardoPonce {
-    private int x;
-    private int y;
-    private int bit;
-    private int depth;
+public class Pixbit{
+    public int x;
+    public int y;
+    public int bit;
+    public int depth;
 
     
     //Constructor
-    public Pixbitd_205769706_GajardoPonce(int x, int y, int bit, int depth) {
+    public Pixbit(int x, int y, int bit, int depth) {
         this.x = x;
         this.y = y;
         this.bit = bit;
@@ -40,13 +40,6 @@ public class Pixbitd_205769706_GajardoPonce extends imagen_205769706_GajardoPonc
     }
     
 
-    public Pixbitd_205769706_GajardoPonce(int x, int y, int bit, int depth, int alto, int ancho) {
-        super(alto, ancho);
-        this.x = x;
-        this.y = y;
-        this.bit = bit;
-        this.depth = depth;
-    }
     
     
 }

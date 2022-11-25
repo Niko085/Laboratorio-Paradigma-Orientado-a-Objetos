@@ -2,7 +2,7 @@
 package Lab3POO;
 
 
-public class Pixrgbd_205769706_GajardoPonce extends imagen_205769706_GajardoPonce{
+public class Pixrgb {
     private int x;
     private int y;
     private int r;
@@ -12,7 +12,7 @@ public class Pixrgbd_205769706_GajardoPonce extends imagen_205769706_GajardoPonc
     
     
     //Constructor
-    public Pixrgbd_205769706_GajardoPonce(int x, int y, int r, int g, int b, int depth) {
+    public Pixrgb(int x, int y, int r, int g, int b, int depth) {
         this.x = x;
         this.y = y;
         this.r = r;

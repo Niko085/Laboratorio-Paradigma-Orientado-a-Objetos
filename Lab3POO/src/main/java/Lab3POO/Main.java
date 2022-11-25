@@ -3,21 +3,7 @@ package Lab3POO;
 import java.util.*;
 
 public class Main {
-    
-    //public static void main(String[] args) {
-        // TODO code application logic here
-      //  System.out.println("Hola Nico");
-    //    Scanner entrada = new Scanner(System.in);
-      //  int numero;
-        
-      //  System.out.print("Digita un numero: ");
-      //  numero = entrada.nextInt();
-        //
-       // System.out.println("El numero es: "+numero);
-    //}
-    
-    
-    
+      
     public static void menuInicial(){
         System.out.println("\n### Manipulador de imagenes ###");
         System.out.println("    1. Crear una imagen");
@@ -85,42 +71,56 @@ public class Main {
 
         */
         
-        //int opcion = menuInicial();
-        int cantidad;
+        int alto;
+        int ancho;
         int x;
         int y;
         int bit;
         int depth;
+        int cont = 1;
         
-        System.out.println("Ingrese la cantidad de pixeles: ");
         
+        //Imagen image = new Imagen(ancho,alto);
+        
+        
+        System.out.println("Ingrese el ancho de la imagen: ");
         Scanner entrada = new Scanner(System.in);
-        cantidad = entrada.nextInt();
+        ancho = entrada.nextInt();
+        System.out.println("Ingrese el alto de la imagen: ");
+        alto = entrada.nextInt();
         
-        Pixbitd_205769706_GajardoPonce pixeles[] = new Pixbitd_205769706_GajardoPonce[cantidad];
+        Imagen image = new Imagen(ancho,alto);
+        
+        Pixbit pixeles[][] = new Pixbit[ancho][alto];
 
         
         
-        for(int i=0; i<pixeles.length;i++){
-            System.out.println("\nIngrese los datos del pixel N-"+(i+1)+"");
-            System.out.println("Introduzca x: ");
-            x = entrada.nextInt();
-            System.out.println("Intoduzca y: ");
-            y = entrada.nextInt();
-            System.out.println("Introduzca el bit: ");
-            bit = entrada.nextInt();
-            System.out.println("Introduzca la profundidad: ");
-            depth = entrada.nextInt();
-            
-            pixeles[i] = new Pixbitd_205769706_GajardoPonce(x,y,bit,depth);
+        for(int i=0; i<image.ancho;i++){
+            for(int j=0; j<image.alto;j++){
+                System.out.println("\nIngrese los datos del pixel N-"+(cont)+"");
+                System.out.println("Introduzca x: ");
+                x = entrada.nextInt();
+                System.out.println("Intoduzca y: ");
+                y = entrada.nextInt();
+                System.out.println("Introduzca el bit: ");
+                bit = entrada.nextInt();
+                System.out.println("Introduzca la profundidad: ");
+                depth = entrada.nextInt();
+
+                pixeles[i][j] = new Pixbit(x,y,bit,depth);
+                
+                cont++;
+            }
         }
         
         //System.out.println(pixeles[0].mostrarDatos());
-        
-        System.out.println("Los pixeles ingresados son: ");
-        for(int i=0; i<pixeles.length;i++){
-            System.out.println("\nDatos del pixel N-"+(i+1)+"");
-            System.out.println(pixeles[i].mostrarDatos());
+        //cont = 1;
+        System.out.println("\nLos pixeles ingresados son: ");
+        for(int i=0; i<image.ancho;i++){
+            for(int j=0; j<image.alto;j++){
+                System.out.println("\nDatos del pixel de las coordenadas ("+(i)+","+(j)+")");
+                System.out.println(pixeles[i][j].mostrarDatos());
+            }
         }
         
 

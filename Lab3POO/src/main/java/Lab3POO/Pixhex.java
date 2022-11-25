@@ -9,14 +9,14 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixhexd_205769706_GajardoPonce{
+public class Pixhex{
     private int x;
     private int y;
     private String color;//Color en Hexadecimal
     private int depth;
     
     //Constructor
-    public Pixhexd_205769706_GajardoPonce(int x, int y, String color, int depth) {
+    public Pixhex(int x, int y, String color, int depth) {
         this.x = x;
         this.y = y;
         this.color = color;//Color en Hexadecimal
