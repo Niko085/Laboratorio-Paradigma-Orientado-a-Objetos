@@ -9,6 +9,20 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Bitmap {
+public class Bitmap extends Imagen{
     private int a;
+    //String[] array;
+    //Pixbit pixeles[][];
+
+    public Bitmap(int a, int alto, int ancho) {
+        super(alto, ancho);
+        this.a = a;
+    }
+
+
+
+
+
+    
+    
 }

@@ -6,8 +6,8 @@ package Lab3POO;
  * @author nicolas
  */
 public class Imagen{
-    protected int alto;
-    protected int ancho;
+    public int alto;
+    public int ancho;
 
     public Imagen(int alto, int ancho) {
         this.alto = alto;
