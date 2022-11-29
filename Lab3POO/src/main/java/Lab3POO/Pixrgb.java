@@ -1,51 +1,54 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Lab3POO;
 
+/**
+ *
+ * @author nicol
+ */
+public class Pixrgb extends ComunPixeles{
+    public int r;
+    public int g;
+    public int b;
 
-public class Pixrgb {
-    private int x;
-    private int y;
-    private int r;
-    private int g;
-    private int b;
-    private int depth;
-    
-    
-    //Constructor
-    public Pixrgb(int x, int y, int r, int g, int b, int depth) {
-        this.x = x;
-        this.y = y;
+    public Pixrgb(int r, int g, int b, int x, int y, int depth) {
+        super(x, y, depth);
         this.r = r;
         this.g = g;
         this.b = b;
-        this.depth = depth;
-    }
-
-    //Getters
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     public int getR() {
         return r;
     }
 
+    public void setR(int r) {
+        this.r = r;
+    }
+
     public int getG() {
         return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
     }
 
     public int getB() {
         return b;
     }
 
-    public int getDepth() {
-        return depth;
+    public void setB(int b) {
+        this.b = b;
     }
-   
+
+    @Override
+    public String toString() {
+        return super.toString()+"Pixrgb" + "r=" + r + ", g=" + g + ", b=" + b + '}';
+    }
+    
+    
 }
-
-

@@ -5,28 +5,31 @@
  */
 package Lab3POO;
 
-import java.util.*;
-
-
 /**
  *
  * @author nicol
  */
-public class Pixbit {
-    public int x;
-    public int y;
+public class Pixbit extends ComunPixeles{
     public int bit;
-    public int depth;
 
-    public Pixbit(int x, int y, int bit, int depth) {
-        this.x = x;
-        this.y = y;
+    public Pixbit(int bit, int x, int y, int depth) {
+        super(x, y, depth);
         this.bit = bit;
-        this.depth = depth;
+    }
+
+    public int getBit() {
+        return bit;
+    }
+
+    public void setBit(int bit) {
+        this.bit = bit;
     }
     
-    public String mostrarDatos(){
-        return "x: "+x+"\ny: "+y+"\nbit: "+bit+"\nprofundidad: "+depth+"\n";
-    }
 
+    @Override
+    public String toString() {
+        return super.toString()+"Pixbit" + "bit=" + bit + '}';
+    }
+    
+    
 }

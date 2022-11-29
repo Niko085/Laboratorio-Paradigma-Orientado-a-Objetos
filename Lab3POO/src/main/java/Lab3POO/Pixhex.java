@@ -9,35 +9,27 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixhex{
-    private int x;
-    private int y;
-    private String color;//Color en Hexadecimal
-    private int depth;
+public class Pixhex extends ComunPixeles{
+    public String hex;
+
+    public Pixhex(String hex, int x, int y, int depth) {
+        super(x, y, depth);
+        this.hex = hex;
+    }
+
+    public String getHex() {
+        return hex;
+    }
+
+    public void setHex(String hex) {
+        this.hex = hex;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Pixhex" + "hex=" + hex + '}';
+    }
     
-    //Constructor
-    public Pixhex(int x, int y, String color, int depth) {
-        this.x = x;
-        this.y = y;
-        this.color = color;//Color en Hexadecimal
-        this.depth = depth;
-    }
     
-    //Getters
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getDepth() {
-        return depth;
-    }
     
 }

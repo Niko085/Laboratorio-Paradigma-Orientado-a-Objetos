@@ -31,15 +31,11 @@ public class Main {
     
     
     public static void main(String[] args) {
-        Pixbit pixeles[]= new Pixbit[1];
+        //System.out.println("Nico");
+        Pixbit bit[] = new Pixbit[2];
+        bit[0] = new Pixbit(1,0,1,2);
+        int numero = bit[0].getY();
+        System.out.println(numero);
         
-        pixeles[0] = new Pixbit(1,2,3,4);
-        
-        System.out.println(pixeles[0].mostrarDatos());
-
     }
-
-
-
-
 }
