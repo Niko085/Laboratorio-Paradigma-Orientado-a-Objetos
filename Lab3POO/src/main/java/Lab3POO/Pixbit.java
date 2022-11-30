@@ -5,6 +5,7 @@
  */
 package Lab3POO;
 
+import java.util.*;
 /**
  *
  * @author nicol
@@ -12,24 +13,20 @@ package Lab3POO;
 public class Pixbit extends ComunPixeles{
     public int bit;
 
-    public Pixbit(int bit, int x, int y, int depth) {
+    public Pixbit(int x, int y, int depth,int bit) {
         super(x, y, depth);
-        this.bit = bit;
-    }
+        System.out.println("Ingrese el valor bit");
+        if(bit == 0 || bit == 1){
+            this.bit = bit;
+        }
+        else{
+            System.out.println("Solo puede ingresar valores entre 0 y 1");
+        }
 
-    public int getBit() {
-        return bit;
-    }
-
-    public void setBit(int bit) {
-        this.bit = bit;
     }
     
-
-    @Override
-    public String toString() {
-        return super.toString()+"Pixbit" + "bit=" + bit + '}';
+    public String toString(int tipo) {
+        return super.toString()+ "bit: " + bit + ']';
     }
-    
     
 }

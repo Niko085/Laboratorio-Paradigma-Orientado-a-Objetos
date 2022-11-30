@@ -13,9 +13,15 @@ public abstract class ComunPixeles {
     private int depth;
 
     public ComunPixeles(int x, int y, int depth) {
-        this.x = x;
-        this.y = y;
-        this.depth = depth;
+        if (x>0 && y>0 && depth>0){
+            this.x = x;
+            this.y = y;
+            this.depth = depth;
+        }
+        else{
+            System.out.println("Debe ingresar valores mayores a 0");
+        }
+
     }
 
     public int getX() {
@@ -44,7 +50,7 @@ public abstract class ComunPixeles {
 
     @Override
     public String toString() {
-        return "ComunPixeles{" + "x=" + x + ", y=" + y + ", depth=" + depth + ", " ;
+        return "[" + "x:" + x + ", y:" + y + ", prof:" + depth + ", " ;
     }
     
     
