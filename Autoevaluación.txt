@@ -1,11 +1,11 @@
 Requerimientos Funcionales	Evaluación
-Clases y estructuras                0
-Menú                                0
-image	                            0
-isBitmap                            0
-isPixmap	                    0
-isHexmap	                    0
-isCompressed	                    0
+Clases y estructuras                1
+Menú                                1
+image	                            1
+isBitmap                            1
+isPixmap	                    1
+isHexmap	                    1
+isCompressed	                    1
 flipH	                            0
 flipV	                            0
 crop                                0

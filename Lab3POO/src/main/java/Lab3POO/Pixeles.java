@@ -10,7 +10,7 @@ import java.util.*;
  * @author nicol
  */
 public class Pixeles extends ComunPixeles{
-    
+    public int bit;
     public String hex;
     public int r;
     public int g;

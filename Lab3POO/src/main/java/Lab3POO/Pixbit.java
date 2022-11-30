@@ -13,9 +13,8 @@ import java.util.*;
 public class Pixbit extends ComunPixeles{
     public int bit;
 
-    public Pixbit(int x, int y, int depth,int bit) {
+    public Pixbit(int x, int y, int depth, int bit) {
         super(x, y, depth);
-        System.out.println("Ingrese el valor bit");
         if(bit == 0 || bit == 1){
             this.bit = bit;
         }
@@ -25,7 +24,8 @@ public class Pixbit extends ComunPixeles{
 
     }
     
-    public String toString(int tipo) {
+    @Override
+    public String toString() {
         return super.toString()+ "bit: " + bit + ']';
     }
     
