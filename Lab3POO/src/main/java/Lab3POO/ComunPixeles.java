@@ -51,6 +51,7 @@ public abstract class ComunPixeles {
 
     public String toString() {
         return "[" + "x:" + x + ", y:" + y + ", prof:" + depth + ", " ;
+        //return "";
     }
     
     

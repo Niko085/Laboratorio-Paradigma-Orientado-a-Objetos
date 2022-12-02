@@ -9,7 +9,6 @@ public class Imagen {
     public int ancho;
     public int alto;
     public int tipo;
-    public int cantidad;
     public Pixbit pixelesbit[][];
     public Pixrgb pixelesrgb[][];
     public Pixhex pixeleshex[][];
@@ -32,8 +31,8 @@ public class Imagen {
         }
 
         int contador=1;
-        for(int i=0 ; i<ancho ; i++){
-            for (int j=0 ; j<alto ; j++){
+        for(int i=0 ; i<alto ; i++){
+            for (int j=0 ; j<ancho ; j++){
                 System.out.println("\nIngrese los datos del pixel N-"+(contador)+"");
                 
                 System.out.println("Ingrese la coordenada x:");
@@ -94,14 +93,6 @@ public class Imagen {
         this.tipo = tipo;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public Pixbit[][] getPixelesbit() {
         return pixelesbit;
     }
@@ -129,12 +120,14 @@ public class Imagen {
 
     public void mostrarElementos(){
         //System.out.println("Elementos en el arreglo");
-        System.out.println("*****************Pixeles*****************");
-        for (int i=0; i<ancho;i++){
-            for(int j=0 ; j<alto; j++){
+        System.out.println("\n*****************Imagen creada*****************");
+        System.out.println("Ancho:"+getAncho()+"  Alto:"+getAlto()+"");
+        for (int i=0; i<getAncho();i++){
+            for(int j=0 ; j<getAlto(); j++){
                 switch (tipo) {
                     case 1:
-                        System.out.print(pixelesbit[i][j].toString());
+                        //System.out.print(pixelesbit[i][j].toString());
+                        System.out.println("("+i+","+j+"");
                         break;
                     case 2:
                         System.out.print(pixelesrgb[i][j].toString());
@@ -145,10 +138,9 @@ public class Imagen {
                     default:
                         break;
                 }
-                System.out.println("\n");
-            }
-            
                 
+            }
+            System.out.print("\n");      
         }
     }
     
@@ -183,8 +175,8 @@ public class Imagen {
         int tamanio = anch * alt;
         int contador = 0;
         
-        for(int i=0; i< ancho ; i++){
-            for(int j=0; j< alto ;j++ ){
+        for(int i=0; i< getAlto() ; i++){
+            for(int j=0; j< getAncho() ;j++ ){
                 contador++;
                 }
             }
@@ -198,11 +190,288 @@ public class Imagen {
     
     
     public void flipH(){
-        for (int i=0 ; i<2 ; i++){
-            for (int j=2 ; j>0 ; --j){
-                System.out.println(""+i+""+j+"");
+        if(isBitmap() == 1){
+            Pixbit nuevosPixelesBit[][] = new Pixbit[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<getAlto() ; i++){
+                for( int j=(getAncho()-1) ; j>=0 ; --j){
+                    nuevosPixelesBit[cont1][cont2] = new Pixbit(pixelesbit[i][j].getX(),pixelesbit[i][j].getY(),pixelesbit[i][j].getDepth(),pixelesbit[i][j].getBit());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
             }
+            System.out.println("**Imagen volteada Horizontalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAlto() ; i++){
+                for( int j=0 ; j<getAncho() ; j++){
+                    nuevosPixelesBit[i][j].setX(i);
+                    nuevosPixelesBit[i][j].setY(j);
+                    System.out.print(nuevosPixelesBit[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesbit(nuevosPixelesBit);
         }
+        else if(isPixmap() == 1){
+            Pixrgb nuevosPixelesRgb[][] = new Pixrgb[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<getAlto() ; i++){
+                for( int j=(getAncho()-1) ; j>=0 ; --j){
+                    nuevosPixelesRgb[cont1][cont2] = new Pixrgb(pixelesrgb[i][j].getX(),pixelesrgb[i][j].getY(),pixelesrgb[i][j].getDepth(),pixelesrgb[i][j].getR(),pixelesrgb[i][j].getG(),pixelesrgb[i][j].getG());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Horizontalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[i][j].setX(i);
+                    nuevosPixelesRgb[i][j].setY(j);
+                    System.out.print(nuevosPixelesRgb[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesrgb(nuevosPixelesRgb);
+        }
+        else if(isHexmap() == 1){
+            Pixhex nuevosPixelesHex[][] = new Pixhex[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=(getAlto()-1) ; j>=0 ; --j){
+                    nuevosPixelesHex[cont1][cont2] = new Pixhex(pixeleshex[i][j].getX(),pixeleshex[i][j].getY(),pixeleshex[i][j].getDepth(),pixeleshex[i][j].getHex());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Horizontalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[i][j].setX(i);
+                    nuevosPixelesHex[i][j].setY(j);
+                    System.out.print(nuevosPixelesHex[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixeleshex(nuevosPixelesHex);
+        }        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public void flipV(){
+        if(isBitmap() == 1){
+            Pixbit nuevosPixelesBit[][] = new Pixbit[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=(getAncho()-1) ; i>=0 ; --i){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesBit[cont1][cont2] = new Pixbit(pixelesbit[i][j].getX(),pixelesbit[i][j].getY(),pixelesbit[i][j].getDepth(),pixelesbit[i][j].getBit());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Verticalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesBit[i][j].setX(i);
+                    nuevosPixelesBit[i][j].setY(j);
+                    System.out.print(nuevosPixelesBit[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesbit(nuevosPixelesBit);
+        }
+        else if(isPixmap() == 1){
+            Pixrgb nuevosPixelesRgb[][] = new Pixrgb[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=(getAncho()-1) ; i>=0 ; --i){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[cont1][cont2] = new Pixrgb(pixelesrgb[i][j].getX(),pixelesrgb[i][j].getY(),pixelesrgb[i][j].getDepth(),pixelesrgb[i][j].getR(),pixelesrgb[i][j].getG(),pixelesrgb[i][j].getG());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Verticalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[i][j].setX(i);
+                    nuevosPixelesRgb[i][j].setY(j);
+                    System.out.print(nuevosPixelesRgb[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesrgb(nuevosPixelesRgb);
+        }
+        else if(isHexmap() == 1){
+            Pixhex nuevosPixelesHex[][] = new Pixhex[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=(getAncho()-1) ; i>=0 ; --i){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[cont1][cont2] = new Pixhex(pixeleshex[i][j].getX(),pixeleshex[i][j].getY(),pixeleshex[i][j].getDepth(),pixeleshex[i][j].getHex());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Verticalmente**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[i][j].setX(i);
+                    nuevosPixelesHex[i][j].setY(j);
+                    System.out.print(nuevosPixelesHex[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixeleshex(nuevosPixelesHex);
+        }        
+    }
+    
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    public void crop(int x1, int y1, int x2, int y2){
+        if(isBitmap() == 1){
+            Pixbit nuevosPixelesBit[][] = new Pixbit[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<getAlto() ; i++){
+                for( int j=0 ; j<getAncho() ; j++){
+                    if((i >= x1) && (i <= x2) && (j >= y1) && ( j<= y2)){
+                        //System.out.println("("+i+","+j+")");
+                        //System.out.print("("+cont1+","+cont2+")");
+                        nuevosPixelesBit[cont1][cont2] = new Pixbit(pixelesbit[i][j].getX(),pixelesbit[i][j].getY(),pixelesbit[i][j].getDepth(),pixelesbit[i][j].getBit());
+                        cont2++;
+                    }
+                    //nuevosPixelesBit[cont1][cont2] = new Pixbit(pixelesbit[i][j].getX(),pixelesbit[i][j].getY(),pixelesbit[i][j].getDepth(),pixelesbit[i][j].getBit());
+                    
+                }
+                cont2 = 0;
+                System.out.println("");
+                cont1++;
+            }
+            
+            System.out.println("**Imagen recortada**");
+            int nuevoAlto = (x2-x1);
+            int nuevoAncho = (y2-y1);
+            for (int i=0 ; i<(nuevoAlto+1) ; i++){
+                for( int j=0 ; j<(nuevoAncho+1) ; j++){
+                    nuevosPixelesBit[i][j].setX(i);
+                    nuevosPixelesBit[i][j].setY(j);
+                    //System.out.println("("+i+ ","+ j+")");
+                    System.out.print(nuevosPixelesBit[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setAncho(nuevoAlto+1);
+            setAlto(nuevoAncho+1);
+            setPixelesbit(nuevosPixelesBit);
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        else if(isPixmap() == 1){
+            Pixrgb nuevosPixelesRgb[][] = new Pixrgb[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=(getAncho()-1) ; i>=0 ; --i){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[cont1][cont2] = new Pixrgb(pixelesrgb[i][j].getX(),pixelesrgb[i][j].getY(),pixelesrgb[i][j].getDepth(),pixelesrgb[i][j].getR(),pixelesrgb[i][j].getG(),pixelesrgb[i][j].getG());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Verticalmente**");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[i][j].setX(i);
+                    nuevosPixelesRgb[i][j].setY(j);
+                    System.out.print(nuevosPixelesRgb[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesrgb(nuevosPixelesRgb);
+        }
+        else if(isHexmap() == 1){
+            Pixhex nuevosPixelesHex[][] = new Pixhex[getAncho()][getAlto()];
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=(getAncho()-1) ; i>=0 ; --i){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[cont1][cont2] = new Pixhex(pixeleshex[i][j].getX(),pixeleshex[i][j].getY(),pixeleshex[i][j].getDepth(),pixeleshex[i][j].getHex());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen volteada Verticalmente**");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[i][j].setX(i);
+                    nuevosPixelesHex[i][j].setY(j);
+                    System.out.print(nuevosPixelesHex[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixeleshex(nuevosPixelesHex);
+        }        
     }
     
     

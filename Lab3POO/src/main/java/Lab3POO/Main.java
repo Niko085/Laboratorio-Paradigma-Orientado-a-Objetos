@@ -13,9 +13,7 @@ public class Main {
         System.out.println("    4. Salir");
         System.out.print("INTRODUZCA SU OPCION: ");
     }
-    
-    
-    
+     
     public static void menuImagenes(){
         System.out.println("\n### Manipulador de imagenes ###");
         System.out.println("    1. Crear bitmap");
@@ -25,22 +23,19 @@ public class Main {
         System.out.print("INTRODUZCA SU OPCION: ");
     }
     
-    
     public static void menuManipularImagen(){
         System.out.println("\n### Seleccione la opcion que desee hacer con la imagen ###");
-        System.out.println("    1. Es del bitmap?");
-        System.out.println("    2. Es del pixmap?");
-        System.out.println("    3. Es del hexmap?");
+        System.out.println("    1. Es del tipo bitmap?");
+        System.out.println("    2. Es del tipo pixmap?");
+        System.out.println("    3. Es del tipo hexmap?");
         System.out.println("    4. Esta comprimida?");
-        System.out.println("    5. Voltear la imagen horizontalmente");
+        System.out.println("    5. Voltear horizontalmente");
+        System.out.println("    6. Voltear verticalmente");
+        System.out.println("    7. Recortar la imagen");
         System.out.println("    20. Volver");
         System.out.print("INTRODUZCA SU OPCION: ");
     }
  
-    
-    
-    
-    
     
     public static void main(String[] args) {
         int ancho =0;
@@ -48,23 +43,42 @@ public class Main {
         int opcion = 0;
         int tipo = 0;
         int eleccion = 0;
-        Imagen img = null;
+        Imagen img = new Imagen(1,1,1);
         Scanner entrada = new Scanner(System.in);
         Scanner entrada2 = new Scanner(System.in);
         
+        Pixbit pixeles[][] = new Pixbit[3][2];
+        pixeles[0][0] = new Pixbit(0,0,1,1);
+        pixeles[0][1] = new Pixbit(0,1,2,0);
+        //pixeles[0][2] = new Pixbit(0,2,4,0);
+        pixeles[1][0] = new Pixbit(1,0,3,1);
+        pixeles[1][1] = new Pixbit(1,1,4,0);
+        //pixeles[1][2] = new Pixbit(1,2,4,1);
+        pixeles[2][0] = new Pixbit(2,0,4,0);
+        pixeles[2][1] = new Pixbit(2,1,4,1);
+        //pixeles[2][2] = new Pixbit(2,2,4,0);
+        /*
+        for(int i=0 ; i<3 ; i++){
+            for(int j=0 ; j<4 ; j++){
+                System.out.println("("+i+","+j+"");
+            }
+        }*/
+        
+        img.setAncho(3);
+        img.setAlto(2);
+        img.setTipo(1);
+        img.setPixelesbit(pixeles);
 
-         while(opcion != 4){
+
+        while(opcion != 4){
             menuInicial();
             opcion = entrada.nextInt();
             
             if (opcion == 1){
                 System.out.println("\nHa seleccionado crear una imagen");
                
-                
                 System.out.println("\nSeleccione el tipo de imagen que desea crear");
-                
                 menuImagenes();
-                //int seleccion;
                 while(tipo != 4){
                     Scanner entradapixeles = new Scanner(System.in);
                     tipo = entradapixeles.nextInt();
@@ -80,7 +94,6 @@ public class Main {
                                 alto = entrada.nextInt();
                                 img = new Imagen(ancho,alto,tipo);
                                 tipo=4;
-                                //seleccion = 1;
                                 break;
                             }
                         case 2:
@@ -94,7 +107,6 @@ public class Main {
                                 alto = entrada.nextInt();
                                 img = new Imagen(ancho,alto,tipo);
                                 tipo=4;
-                                //seleccion = 2;
                                 break;
                             }
                         case 3:
@@ -108,7 +120,6 @@ public class Main {
                                 alto = entrada.nextInt();
                                 img = new Imagen(ancho,alto,tipo);
                                 tipo=4;
-                                //seleccion = 3;
                                 break;
                             }
                         default:
@@ -125,83 +136,61 @@ public class Main {
                 }
                 else{
                     
-                    
-                    
-                    
+
                     
                     
                     
                     while(eleccion != 20){
                         menuManipularImagen();
                         eleccion = entrada2.nextInt();
-                        if(eleccion == 1){
-                            int bitmap = img.isBitmap();
-                            if(bitmap == 1){
-                                System.out.println("Es del tipo bitmap");
-                            }
-                            else{
-                                System.out.println("No es del tipo bitmap");
-                            }
-                        }
-                        else if(eleccion == 2){
-                            int pixmap = img.isPixmap();
-                            if(pixmap == 1){
-                                System.out.println("Es del tipo pixmap");
-                            }
-                            else{
-                                System.out.println("No es de tipo pixmap");
-                            }
-                        }
-                        else if(eleccion == 3){
-                            int hexmap = img.isHexmap();
-                            if(hexmap == 1){
-                                System.out.println("Es del tipo hexmap");
-                            }
-                            else{
-                                System.out.println("No es de tipo hexmap");
-                            }
-                        }
-                        else if(eleccion == 4){
-                            int comprimida = img.isCompressed(ancho,alto);
-                            if(comprimida == 1){
-                                System.out.println("La imagen esta comprimida");
-                            }
-                            else{
-                                System.out.println("La imagen no esta comprimida");
-                            }
-                        }
-                        else if(eleccion == 5){
-                            //Pixbit Pixbit[][] = null;
-                            //img.flipH();
-                            Pixbit pixeles[][] = new Pixbit[2][2];
-                            pixeles[0][0] = new Pixbit(0,0,3,1);
-                            pixeles[0][1] = new Pixbit(0,1,3,1);
-                            pixeles[1][0] = new Pixbit(1,0,3,1);
-                            pixeles[1][1] = new Pixbit(1,1,3,1);
-                            img.setPixelesbit(pixeles);
-                            //int nuevoAncho = img.getAncho();
-                            //int nuevoAlto = img.getAlto();
-                            
-                            for (int i=0 ; i<2 ; i++){
-                                for( int j=0 ; j<2 ; j++){
-                                    System.out.println(pixeles[i][j].toString());
+                        switch (eleccion) {
+                            case 1:
+                                int bitmap = img.isBitmap();
+                                if(bitmap == 1){
+                                    System.out.println("\nEs del tipo bitmap");
                                 }
-                            }
-                            System.out.println("Ahora viene a imagen modificada");
-                            
-                            img.mostrarElementos();
-                            
-                            
+                                else{
+                                    System.out.println("\nNo es del tipo bitmap");
+                                }   break;
+                            case 2:
+                                int pixmap = img.isPixmap();
+                                if(pixmap == 1){
+                                    System.out.println("\nEs del tipo pixmap");
+                                }
+                                else{
+                                    System.out.println("\nNo es de tipo pixmap");
+                                }   break;
+                            case 3:
+                                int hexmap = img.isHexmap();
+                                if(hexmap == 1){
+                                    System.out.println("\nEs del tipo hexmap");
+                                }
+                                else{
+                                    System.out.println("\nNo es de tipo hexmap");
+                                }   break;
+                            case 4:
+                                int comprimida = img.isCompressed(ancho,alto);
+                                if(comprimida == 1){
+                                    System.out.println("\nLa imagen esta comprimida");
+                                }
+                                else{
+                                    System.out.println("\nLa imagen no esta comprimida");
+                                }   break;
+                            case 5:
+                                img.flipH();
+                                break;
+                            case 6:
+                                img.flipV();
+                                break;
+                            case 7:
+                                int x1,y1,x2,y2;
+                                img.crop(0,2,0,2);
+                                break;
+                            default:
+                                break;
                         }
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    eleccion = 0;                    
                 }
             }
             else if(opcion == 3){
@@ -213,10 +202,10 @@ public class Main {
                     img.mostrarElementos();
                 }
             }
-            else if(opcion < 1 ){
+            else if(opcion <= 0 ){
                 System.out.println("\nUps, ha seleccionado una opcion invalida, pruebe con otra");
             }
-            else if(opcion > 4 ){
+            else if(opcion >= 5 ){
                 System.out.println("\nUps, ha seleccionado una opcion invalida, pruebe con otra");
             }
         }

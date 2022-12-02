@@ -16,11 +16,20 @@ public class Pixhex extends ComunPixeles{
         super(x, y, depth);
         this.hex = hex;
     }
+
+    public String getHex() {
+        return hex;
+    }
+
+    public void setHex(String hex) {
+        this.hex = hex;
+    }
     
     
     
     @Override
     public String toString(){
-        return super.toString()+ "hex: " + hex + ']';
+        //return super.toString()+ "hex: " + hex + ']';
+        return "" + hex + " ";
     }
 }

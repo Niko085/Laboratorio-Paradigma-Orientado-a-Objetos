@@ -23,10 +23,20 @@ public class Pixbit extends ComunPixeles{
         }
 
     }
+
+    public int getBit() {
+        return bit;
+    }
+
+    public void setBit(int bit) {
+        this.bit = bit;
+    }
+    
     
     @Override
     public String toString() {
-        return super.toString()+ "bit: " + bit + ']';
+        //return super.toString()+ "bit: " + bit + ']';
+        return "" + bit + " ";
     }
     
 }

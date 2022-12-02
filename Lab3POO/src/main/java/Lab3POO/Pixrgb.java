@@ -25,10 +25,37 @@ public class Pixrgb extends ComunPixeles{
             System.out.println("Solo puede ingresar valores entre 0 y 255");
         }
     }
+
+    public int getR() {
+        return r;
+    }
+
+    public void setR(int r) {
+        this.r = r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+    
+    
     
     @Override
     public String toString(){
-        return super.toString()+ "r: " + r+ ", " + "g: " + g + ", " + "b: " + b + ']';
+        //return super.toString()+ "r: " + r+ ", " + "g: " + g + ", " + "b: " + b + ']';
+        return "[" + r+ "," + g + "," + b + "] ";
     }
     
     
