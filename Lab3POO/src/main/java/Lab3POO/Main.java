@@ -16,6 +16,7 @@ public class Main {
      
     public static void menuImagenes(){
         System.out.println("\n### Manipulador de imagenes ###");
+        System.out.println("\nSeleccione el tipo de imagen que desea crear");
         System.out.println("    1. Crear bitmap");
         System.out.println("    2. Crear pixmap");
         System.out.println("    3. Crear hexmap");
@@ -34,6 +35,7 @@ public class Main {
         System.out.println("    7. Recortar la imagen");
         System.out.println("    8. Transformar RGB a Hexadecimal");
         System.out.println("    9. Realizar histograma");
+        System.out.println("    10. Rotarla 90 grados");
         System.out.println("    20. Volver");
         System.out.print("INTRODUZCA SU OPCION: ");
     }
@@ -46,41 +48,40 @@ public class Main {
         int opcion = 0;
         int tipo = 0;
         int eleccion = 0;
-        Imagen img = new Imagen(1,1,1);
+        Imagen img = new Imagen();
         Scanner entrada = new Scanner(System.in);
         Scanner entrada2 = new Scanner(System.in);
         
 
-/*
 
-        Pixbit pixeles[][] = new Pixbit[3][3];
+
+        Pixbit pixeles[][] = new Pixbit[2][3];
         pixeles[0][0] = new Pixbit(0,0,1,1);
-        pixeles[0][1] = new Pixbit(0,1,2,0);
+        pixeles[0][1] = new Pixbit(0,1,2,1);
         pixeles[0][2] = new Pixbit(0,2,4,0);
         pixeles[1][0] = new Pixbit(1,0,3,1);
         pixeles[1][1] = new Pixbit(1,1,4,0);
         pixeles[1][2] = new Pixbit(1,2,4,1);
-        pixeles[2][0] = new Pixbit(2,0,4,0);
-        pixeles[2][1] = new Pixbit(2,1,4,1);
-        pixeles[2][2] = new Pixbit(2,2,4,0);
+        //pixeles[2][0] = new Pixbit(2,0,4,0);
+        //pixeles[2][1] = new Pixbit(2,1,4,1);
+        //pixeles[2][2] = new Pixbit(2,2,4,0);
 
         
         img.setAncho(3);
-        img.setAlto(3);
+        img.setAlto(2);
         img.setTipo(1);
         img.setPixelesbit(pixeles);
         
         
-        String hexaa = String.format("#%02X%02X%02X", 255,255,255);
-        System.out.println(hexaa);
+        //img.rotate90();
 
 
 
 
-*/
 
 
 
+/*
 
         Pixrgb pixeles[][] = new Pixrgb[3][3];
         pixeles[0][0] = new Pixrgb(0,0,1,255,255,255);
@@ -98,7 +99,7 @@ public class Main {
         img.setAlto(3);
         img.setTipo(2);
         img.setPixelesrgb(pixeles);
-
+*/
 
 
 
@@ -132,58 +133,53 @@ public class Main {
             
             if (opcion == 1){
                 System.out.println("\nHa seleccionado crear una imagen");
-               
-                System.out.println("\nSeleccione el tipo de imagen que desea crear");
-                menuImagenes();
+                
                 while(tipo != 4){
+                    menuImagenes();
                     Scanner entradapixeles = new Scanner(System.in);
                     tipo = entradapixeles.nextInt();
-                    switch (tipo) {
-                        case 1:
-                            {
-                                System.out.println("Ha seleccionado crear una imagen de tipo bitmap");
+                    
+                    if (tipo == 1){
+                        System.out.println("Ha seleccionado crear una imagen de tipo bitmap");
                                 
-                                System.out.println("\nIngrese el ancho de la imagen: ");
-                                ancho = entrada.nextInt();
+                        System.out.println("\nIngrese el ancho de la imagen: ");
+                        ancho = entrada.nextInt();
 
-                                System.out.println("Ingrese el alto de la imagen: ");
-                                alto = entrada.nextInt();
-                                img = new Imagen(ancho,alto,tipo);
-                                img.mostrarElementos();
-                                tipo=4;
-                                break;
-                            }
-                        case 2:
-                            {
-                                System.out.println("Ha seleccionado crear una imagen de tipo pixmap");
+                        System.out.println("Ingrese el alto de la imagen: ");
+                        alto = entrada.nextInt();
+                        img = new Imagen(ancho,alto,tipo);
+                        img.mostrarElementos();
+                        tipo=4;
+                    }
+                    else if (tipo == 2){
+                        System.out.println("Ha seleccionado crear una imagen de tipo pixmap");
                                 
-                                System.out.println("\nIngrese el ancho de la imagen: ");
-                                ancho = entrada.nextInt();
+                        System.out.println("\nIngrese el ancho de la imagen: ");
+                        ancho = entrada.nextInt();
 
-                                System.out.println("Ingrese el alto de la imagen: ");
-                                alto = entrada.nextInt();
-                                img = new Imagen(ancho,alto,tipo);
-                                img.mostrarElementos();
-                                tipo=4;
-                                break;
-                            }
-                        case 3:
-                            {
-                                System.out.println("Ha seleccionado crear una imagen de tipo hexmap");
+                        System.out.println("Ingrese el alto de la imagen: ");
+                        alto = entrada.nextInt();
+                        img = new Imagen(ancho,alto,tipo);
+                        img.mostrarElementos();
+                        tipo=4;
+                    }
+                    else if (tipo == 3){
+                        System.out.println("Ha seleccionado crear una imagen de tipo hexmap");
                                 
-                                System.out.println("\nIngrese el ancho de la imagen: ");
-                                ancho = entrada.nextInt();
+                        System.out.println("\nIngrese el ancho de la imagen: ");
+                        ancho = entrada.nextInt();
 
-                                System.out.println("Ingrese el alto de la imagen: ");
-                                alto = entrada.nextInt();
-                                img = new Imagen(ancho,alto,tipo);
-                                img.mostrarElementos();
-                                tipo=4;
-                                break;
-                            }
-                        default:
-                            System.out.println("\nUps, ha seleccionado una opcion invalida, pruebe con otra");
-                            break;
+                        System.out.println("Ingrese el alto de la imagen: ");
+                        alto = entrada.nextInt();
+                        img = new Imagen(ancho,alto,tipo);
+                        img.mostrarElementos();
+                        tipo=4;
+                    }
+                    else if(tipo <= 0 ){
+                        System.out.println("\nUps, ha seleccionado una opcion invalida, pruebe con otra");
+                    }
+                    else if(tipo >= 5 ){
+                        System.out.println("\nUps, ha seleccionado una opcion invalida, pruebe con otra");
                     }
                 }
                 tipo = 0;
@@ -256,6 +252,15 @@ public class Main {
                                 break;
                             case 8:
                                 img.imgRGBToHex();
+                                break;
+                            case 9:
+                                img.histogram();
+                                break;
+                            case 10:
+                                img.rotate90();
+                                break;
+                            case 11:
+                                System.out.println("A");
                                 break;
                             default:
                                 break;

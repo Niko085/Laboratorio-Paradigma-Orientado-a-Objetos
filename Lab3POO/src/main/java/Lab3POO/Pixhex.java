@@ -9,7 +9,7 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixhex extends ComunPixeles{
+public class Pixhex extends Pixel{
     public String hex;
 
     public Pixhex(int x, int y, int depth, String hex) {

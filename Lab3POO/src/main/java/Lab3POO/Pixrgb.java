@@ -9,7 +9,7 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixrgb extends ComunPixeles{
+public class Pixrgb extends Pixel{
     public int r;
     public int g;
     public int b;

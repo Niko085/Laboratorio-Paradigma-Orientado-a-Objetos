@@ -7,12 +7,12 @@ package Lab3POO;
  *
  * @author nicolas
  */
-public abstract class ComunPixeles {
-    private int x;
-    private int y;
-    private int depth;
+public abstract class Pixel {
+    protected int x;
+    protected int y;
+    protected int depth;
 
-    public ComunPixeles(int x, int y, int depth) {
+    public Pixel(int x, int y, int depth) {
         if (x>=0 && y>=0 && depth>=0){
             this.x = x;
             this.y = y;

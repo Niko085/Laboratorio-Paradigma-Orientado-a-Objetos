@@ -5,23 +5,17 @@
  */
 package Lab3POO;
 
-import java.util.*;
 /**
  *
  * @author nicol
  */
-public class Pixbit extends Pixel{
+public class TDAHistograma {
     public int bit;
+    public int cantidadBit;
 
-    public Pixbit(int x, int y, int depth, int bit) {
-        super(x, y, depth);
-        if(bit == 0 || bit == 1){
-            this.bit = bit;
-        }
-        else{
-            System.out.println("Solo puede ingresar valores entre 0 y 1");
-        }
-
+    public TDAHistograma(int bit, int cantidad) {
+        this.bit = bit;
+        this.cantidadBit = cantidad;
     }
 
     public int getBit() {
@@ -31,12 +25,19 @@ public class Pixbit extends Pixel{
     public void setBit(int bit) {
         this.bit = bit;
     }
+
+    public int getCantidadBit() {
+        return cantidadBit;
+    }
+
+    public void setCantidadBit(int cantidadBit) {
+        this.cantidadBit = cantidadBit;
+    }
     
-    
+
     @Override
     public String toString() {
-        //return super.toString()+ "bit: " + bit + ']';
-        return "" + bit + " ";
+        return "{" + "bit=" + bit + ", cantidad=" + cantidadBit + '}';
     }
     
 }

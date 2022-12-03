@@ -14,6 +14,10 @@ public class Imagen {
     public Pixhex pixeleshex[][];
     
 
+    public Imagen(){
+        
+    }
+    
     public Imagen(int ancho, int alto, int tipo) {
         int x,y,depth,bit,r,g,b;
         String hex;
@@ -29,12 +33,10 @@ public class Imagen {
         else if(tipo == 3){
             pixeleshex  = new Pixhex[alto][ancho];
         }
-
         int contador=1;
         for(int i=0 ; i<alto ; i++){
             for (int j=0 ; j<ancho ; j++){
                 System.out.println("\nIngrese los datos del pixel N-"+(contador)+"");
-                
                 System.out.println("Ingrese la coordenada x:");
                 x = entrada.nextInt();
                 System.out.println("Ingrese la coordenada y:");
@@ -389,8 +391,8 @@ public class Imagen {
             System.out.println("Ancho:"+nuevoAncho+", Alto:"+nuevoAlto+"\n");
             for (int i=0 ; i<nuevoAlto ; i++){
                 for( int j=0 ; j<nuevoAncho ; j++){
-                    nuevosPixelesBit[0][0].setX(i);
-                    nuevosPixelesBit[0][0].setY(j);
+                    nuevosPixelesBit[i][j].setX(i);
+                    nuevosPixelesBit[i][j].setY(j);
                     System.out.print(nuevosPixelesBit[i][j].toString());
                 }
                 System.out.println("");
@@ -550,10 +552,187 @@ public class Imagen {
     
     
     public void histogram(){
-        System.out.println("");
+        /*
+        //int arreglo[] = {1,0,0,4,1,3,4,0,2,1};
+        String arreglo[] = {"a","a","b","d","a","z","x","b","z"};
+        Arrays.sort(arreglo);
+        int contador = 0;
+        //int aux = arreglo[0];
+        String aux = arreglo[0];
+        
+        for(int i=0 ; i<arreglo.length ; i++){
+            //System.out.println(arreglo[i]);
+            if(aux == arreglo[i]){
+                contador++;
+            }
+            else{
+                System.out.println("El numero "+arreglo[i]+" se repite"+contador+" veces");
+                
+                contador = 1;
+                aux = aux+1;
+            }
+        }      
+*/      
+        if(isBitmap() == 1){
+            int ceros= 0;
+            int unos=0;
+            if(isBitmap()==1){
+                for(int i=0 ; i<getAlto() ; i++){
+                    for(int j=0 ; j<getAncho() ; j++){
+                        if(pixelesbit[i][j].getBit() == 1){
+                            unos++;
+                        }else{
+                            ceros++;
+                        }
+                    }
+                }
+            }
+            //System.out.println("0s:"+ceros+", 1s"+unos);
+            TDAHistograma histograma[] = new TDAHistograma[2];
+            histograma[0] = new TDAHistograma(0,ceros);
+            histograma[1] = new TDAHistograma(1,unos);
+
+            System.out.println("***Histograma***");
+            for(int i=0 ; i< histograma.length ; i++){
+                System.out.println(histograma[i].toString());
+            }
+        }
+        else{
+            System.out.println("El histograma solo funciona para bitmap :(");
+        }
+            
+        
+        //TDAHistograma histograma[] = new TDAHistograma();
+        
     }
     
     
     
     
+    
+    
+    
+    
+    public void rotate90(){
+        int primerParametro = 0;
+        int segundoParametro = 0;
+        if(getAlto() > getAncho()){
+            primerParametro = getAlto()-1;
+            segundoParametro = getAncho();
+        }
+        if(getAlto() == getAncho()){
+            primerParametro = getAlto();
+            segundoParametro = getAncho()-1;
+        }
+        if(getAlto() < getAncho()){
+            primerParametro = getAncho();
+            segundoParametro = getAlto()-1;
+        }
+        if(isBitmap() == 1){
+            Pixbit nuevosPixelesBit[][] = new Pixbit[getAncho()][getAlto()];
+                        
+            System.out.println("dimensiones:"+getAncho()+","+getAlto());//3,2
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<primerParametro ; i++){//alto
+                for( int j=segundoParametro ; j>=0 ; --j){//ancho
+                    nuevosPixelesBit[cont1][cont2] = new Pixbit(pixelesbit[j][i].getX(),pixelesbit[j][i].getY(),pixelesbit[j][i].getDepth(),pixelesbit[j][i].getBit());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen rotada 90 grados a la derecha**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesBit[i][j].setX(i);
+                    nuevosPixelesBit[i][j].setY(j);
+                    System.out.print(nuevosPixelesBit[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesbit(nuevosPixelesBit);
+            int a = getAlto();
+            int b = getAncho();
+            setAncho(a);
+            setAlto(b);
+        }
+        if(isPixmap() == 1){
+            Pixrgb nuevosPixelesRgb[][] = new Pixrgb[getAncho()][getAlto()];
+                        
+            System.out.println("dimensiones:"+getAncho()+","+getAlto());
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<primerParametro ; i++){//alto
+                for( int j=segundoParametro ; j>=0 ; --j){//ancho
+                    nuevosPixelesRgb[cont1][cont2] = new Pixrgb(pixelesrgb[j][i].getX(),pixelesrgb[j][i].getY(),pixelesrgb[j][i].getDepth(),pixelesrgb[j][i].getR(),pixelesrgb[j][i].getG(),pixelesrgb[j][i].getG());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen rotada 90 grados a la derecha**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesRgb[i][j].setX(i);
+                    nuevosPixelesRgb[i][j].setY(j);
+                    System.out.print(nuevosPixelesRgb[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixelesrgb(nuevosPixelesRgb);
+            int a = getAlto();
+            int b = getAncho();
+            setAncho(a);
+            setAlto(b);
+        }
+        if(isHexmap() == 1){
+            Pixhex nuevosPixelesHex[][] = new Pixhex[getAncho()][getAlto()];
+                        
+            System.out.println("dimensiones:"+getAncho()+","+getAlto());
+
+            int cont1 = 0;
+            int cont2 = 0;
+            for (int i=0 ; i<primerParametro ; i++){//alto
+                for( int j=segundoParametro ; j>=0 ; --j){//ancho
+                    nuevosPixelesHex[cont1][cont2] = new Pixhex(pixeleshex[j][i].getX(),pixeleshex[j][i].getY(),pixeleshex[j][i].getDepth(),pixeleshex[j][i].getHex());
+                    cont2++;
+                }
+                cont2 =0;
+                System.out.println("");
+                cont1++;
+            }
+            System.out.println("**Imagen rotada 90 grados a la derecha**");
+            System.out.println("Ancho:"+getAncho()+", Alto:"+getAlto()+"\n");
+            for (int i=0 ; i<getAncho() ; i++){
+                for( int j=0 ; j<getAlto() ; j++){
+                    nuevosPixelesHex[i][j].setX(i);
+                    nuevosPixelesHex[i][j].setY(j);
+                    System.out.print(nuevosPixelesHex[i][j].toString());
+                }
+                System.out.println("");
+            }
+            setPixeleshex(nuevosPixelesHex);
+            int a = getAlto();
+            int b = getAncho();
+            setAncho(a);
+            setAlto(b);
+        }
+        
+    }
 }
+
+
+
+
+
+
+
+
+
