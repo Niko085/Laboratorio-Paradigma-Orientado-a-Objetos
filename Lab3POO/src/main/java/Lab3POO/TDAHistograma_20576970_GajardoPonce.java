@@ -9,11 +9,11 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class TDAHistograma {
+public class TDAHistograma_20576970_GajardoPonce {
     public int bit;
     public int cantidadBit;
 
-    public TDAHistograma(int bit, int cantidad) {
+    public TDAHistograma_20576970_GajardoPonce(int bit, int cantidad) {
         this.bit = bit;
         this.cantidadBit = cantidad;
     }

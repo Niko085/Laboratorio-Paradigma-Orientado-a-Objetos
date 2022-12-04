@@ -10,12 +10,12 @@ flipH	                            1
 flipV	                            1
 crop                                1
 imgRGBToHex                         1
-histogram                           0
-rotate90                            0
+histogram                          0.25
+rotate90                            1
 compress                            0
-changePixel                         0
-invertColorBit                      0
-invertColorRGB                      0
+changePixel                         1
+invertColorBit                      1
+invertColorRGB                      1
 image->string                       0
 depthLayers                         0
 decompress                          0

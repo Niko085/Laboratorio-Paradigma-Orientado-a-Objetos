@@ -9,12 +9,12 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixrgb extends Pixel{
+public class Pixrgbd_20576970_GajardoPonce extends Pixel_20576970_GajardoPonce{
     public int r;
     public int g;
     public int b;
 
-    public Pixrgb(int x, int y, int depth, int r, int g, int b) {
+    public Pixrgbd_20576970_GajardoPonce(int x, int y, int r, int g, int b, int depth) {
         super(x, y, depth);
         if ((r>=0 && r<=255) && (g>=0 && g<=255) && (b>=0 && b<=255)){
             this.r = r;
@@ -53,6 +53,11 @@ public class Pixrgb extends Pixel{
     
     
     @Override
+    /**
+    * @param de entrada: No tiene
+    * @return de salida: String
+    * @Descripcion: Entrega los colores del pixel
+    */
     public String toString(){
         //return super.toString()+ "r: " + r+ ", " + "g: " + g + ", " + "b: " + b + ']';
         return "[" + r+ "," + g + "," + b + "] ";

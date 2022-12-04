@@ -10,10 +10,10 @@ import java.util.*;
  *
  * @author nicol
  */
-public class Pixbit extends Pixel{
+public class Pixbitd_20576970_GajardoPonce extends Pixel_20576970_GajardoPonce{
     public int bit;
 
-    public Pixbit(int x, int y, int depth, int bit) {
+    public Pixbitd_20576970_GajardoPonce(int x, int y, int bit, int depth) {
         super(x, y, depth);
         if(bit == 0 || bit == 1){
             this.bit = bit;
@@ -24,16 +24,23 @@ public class Pixbit extends Pixel{
 
     }
 
+    //Getter
     public int getBit() {
         return bit;
     }
 
+    //Setter
     public void setBit(int bit) {
         this.bit = bit;
     }
     
     
     @Override
+    /**
+    * @param de entrada: No tiene
+    * @return de salida: String
+    * @Descripcion: Entrega el bit del pixel
+    */
     public String toString() {
         //return super.toString()+ "bit: " + bit + ']';
         return "" + bit + " ";

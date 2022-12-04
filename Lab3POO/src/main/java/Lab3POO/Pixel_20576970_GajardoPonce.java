@@ -7,12 +7,18 @@ package Lab3POO;
  *
  * @author nicolas
  */
-public abstract class Pixel {
+public abstract class Pixel_20576970_GajardoPonce {
     protected int x;
     protected int y;
     protected int depth;
 
-    public Pixel(int x, int y, int depth) {
+    //Constructor
+    /**
+    * @param de entrada: x (int) X y (int) X depth (int)
+    * @return de salida: No tiene
+    * @Descripcion: Construye un pixel
+    */
+    public Pixel_20576970_GajardoPonce(int x, int y, int depth) {
         if (x>=0 && y>=0 && depth>=0){
             this.x = x;
             this.y = y;
@@ -49,6 +55,12 @@ public abstract class Pixel {
     }
 
 
+    @Override
+    /**
+    * @param de entrada: No tiene
+    * @return de salida: String
+    * @Descripcion: Entrega los valores x, y, depth del pixel
+    */
     public String toString() {
         return "[" + "x:" + x + ", y:" + y + ", prof:" + depth + ", " ;
         //return "";

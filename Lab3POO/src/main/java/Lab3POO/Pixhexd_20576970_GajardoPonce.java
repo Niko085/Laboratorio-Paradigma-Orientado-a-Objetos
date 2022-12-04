@@ -9,10 +9,10 @@ package Lab3POO;
  *
  * @author nicol
  */
-public class Pixhex extends Pixel{
+public class Pixhexd_20576970_GajardoPonce extends Pixel_20576970_GajardoPonce{
     public String hex;
 
-    public Pixhex(int x, int y, int depth, String hex) {
+    public Pixhexd_20576970_GajardoPonce(int x, int y, String hex, int depth) {
         super(x, y, depth);
         this.hex = hex;
     }
@@ -28,6 +28,11 @@ public class Pixhex extends Pixel{
     
     
     @Override
+    /**
+    * @param de entrada: No tiene
+    * @return de salida: String
+    * @Descripcion: Entrega el valor hexadecimal del pixel
+    */
     public String toString(){
         //return super.toString()+ "hex: " + hex + ']';
         return "" + hex + " ";
